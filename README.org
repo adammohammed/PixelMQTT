@@ -1,0 +1,11 @@
+* Color changer app
+
+This provides a MQTT broker, listener, and small flask app which communicates with the MQTT server. This server is intended to control RGBW addressable led pixels. I'll be using this program to allow my friends to change the colors of the "neon" signs I make them!
+
+To run this app, you'll need docker. This command will stand up the application.
+
+```bash
+$ docker-compose up
+```
+
+More to come soon!

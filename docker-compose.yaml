@@ -1,0 +1,34 @@
+version: '3.5'
+
+services:
+  broker:
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+    networks:
+      broker-network:
+
+  listener:
+    image: listener:local
+    build:
+      context: listener
+    depends_on:
+      - broker
+    networks:
+      broker-network:
+
+
+  color:
+    image: color:local
+    build:
+      context: .
+    depends_on:
+      - broker
+    command: "run --host=0.0.0.0 --port=8888"
+    ports:
+      - "8888:8888"
+    networks:
+      broker-network:
+
+networks:
+  broker-network:
